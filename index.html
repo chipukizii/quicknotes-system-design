@@ -10,9 +10,15 @@
   <body>
     <header class="site-header">
       <div class="header-content">
-        <p class="eyebrow">QUICKNOTES / API LAB</p>
-        <h1>Notes, in motion.</h1>
-        <p class="tagline">A small client for exploring a notes API.</p>
+        <div class="top-row">
+          <p class="eyebrow" data-i18n="eyebrow">QUICKNOTES / API LAB</p>
+          <div class="language-switch" role="group" aria-label="Choose language">
+            <button class="language-button is-active" type="button" data-language="en" aria-pressed="true">English</button>
+            <button class="language-button" type="button" data-language="sw" aria-pressed="false">Kiswahili</button>
+          </div>
+        </div>
+        <h1 data-i18n="headline">Notes, in motion.</h1>
+        <p class="tagline" data-i18n="tagline">Write notes in English or Kiswahili.</p>
       </div>
     </header>
 
@@ -20,39 +26,39 @@
       <section class="composer" aria-labelledby="form-heading">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">CREATE</p>
-            <h2 id="form-heading">Write a note</h2>
+            <p class="eyebrow" data-i18n="createLabel">CREATE</p>
+            <h2 id="form-heading" data-i18n="formHeading">Write a note</h2>
           </div>
-          <button id="load-btn" class="secondary-button" type="button">Load notes</button>
+          <button id="load-btn" class="secondary-button" type="button" data-i18n="loadButton">Load notes</button>
         </div>
 
         <form id="note-form">
           <div class="field">
-            <label for="title-input">Title</label>
+            <label for="title-input" data-i18n="titleLabel">Title</label>
             <input id="title-input" name="title" type="text" placeholder="A short title" />
           </div>
           <div class="field">
-            <label for="body-input">Note</label>
-            <textarea id="body-input" name="body" rows="4" placeholder="What would you like to remember?"></textarea>
+            <label for="body-input" data-i18n="bodyLabel">Note</label>
+            <textarea id="body-input" name="body" rows="4" placeholder="You can write in English or Kiswahili."></textarea>
           </div>
-          <button id="submit-btn" type="submit">Create note</button>
+          <button id="submit-btn" type="submit" data-i18n="submitButton">Create note</button>
         </form>
       </section>
 
       <section class="notes-section" aria-labelledby="notes-heading">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">YOUR NOTES</p>
-            <h2 id="notes-heading">Recent notes</h2>
+            <p class="eyebrow" data-i18n="notesLabel">YOUR NOTES</p>
+            <h2 id="notes-heading" data-i18n="notesHeading">Recent notes</h2>
           </div>
-          <p id="status" class="status status--idle" role="status" aria-live="polite">Load notes to see the latest posts.</p>
+          <p id="status" class="status status--idle" role="status" aria-live="polite" data-i18n="idleStatus">Load notes to see the latest posts.</p>
         </div>
         <ul id="notes-list" aria-live="polite"></ul>
       </section>
     </main>
 
     <footer>
-      <p>QuickNotes · Learn by building.</p>
+      <p data-i18n="footer">QuickNotes · Learn by building.</p>
     </footer>
   </body>
 </html>
