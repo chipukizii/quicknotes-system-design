@@ -1,0 +1,64 @@
+const API_URL = "https://jsonplaceholder.typicode.com/posts";
+const loadButton = document.querySelector("#load-btn");
+const notesList = document.querySelector("#notes-list");
+const status = document.querySelector("#status");
+
+let notes = [];
+
+function showStatus(message, type) {
+  status.textContent = message;
+  status.className = `status status--${type}`;
+}
+
+function renderNotes(list = notes) {
+  notesList.textContent = "";
+
+  if (list.length === 0) {
+    const emptyMessage = document.createElement("li");
+    emptyMessage.className = "empty-state";
+    emptyMessage.textContent = "No notes yet. Create one to get started.";
+    notesList.append(emptyMessage);
+    return;
+  }
+
+  list.forEach(note => {
+    const item = document.createElement("li");
+    const title = document.createElement("h3");
+    const body = document.createElement("p");
+    const deleteButton = document.createElement("button");
+
+    item.className = "note-card";
+    title.textContent = note.title;
+    body.textContent = note.body;
+    deleteButton.className = "delete-button";
+    deleteButton.type = "button";
+    deleteButton.textContent = "Delete";
+
+    item.append(title, body, deleteButton);
+    notesList.append(item);
+  });
+}
+
+async function request(url = API_URL, options = {}) {
+  const response = await fetch(url, options);
+  if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
+  if (response.status === 204) return null;
+  return response.json();
+}
+
+async function loadNotes() {
+  loadButton.disabled = true;
+  showStatus("Loading notes...", "loading");
+
+  try {
+    notes = await request(`${API_URL}?_limit=10`);
+    renderNotes();
+    showStatus(`Loaded ${notes.length} notes.`, "success");
+  } catch (error) {
+    showStatus("Could not load notes. Please try again.", "error");
+  } finally {
+    loadButton.disabled = false;
+  }
+}
+
+loadButton.addEventListener("click", loadNotes);
