@@ -37,6 +37,7 @@ function renderNotes(list = notes) {
     deleteButton.className = "delete-button";
     deleteButton.type = "button";
     deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => deleteNote(note.id, deleteButton));
 
     item.append(title, body, deleteButton);
     notesList.append(item);
@@ -83,6 +84,22 @@ async function createNote(title, body) {
     showStatus("Could not create the note. Please try again.", "error");
   } finally {
     submitButton.disabled = false;
+  }
+}
+
+async function deleteNote(id, button) {
+  button.disabled = true;
+  showStatus("Deleting note...", "loading");
+
+  try {
+    await request(`${API_URL}/${id}`, { method: "DELETE" });
+    notes = notes.filter(note => note.id !== id);
+    renderNotes();
+    showStatus("Note deleted successfully.", "success");
+  } catch (error) {
+    showStatus("Could not delete the note. Please try again.", "error");
+  } finally {
+    button.disabled = false;
   }
 }
 
