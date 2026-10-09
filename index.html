@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickNotes API Client</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="api.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-content">
+        <p class="eyebrow">QUICKNOTES / API LAB</p>
+        <h1>Notes, in motion.</h1>
+        <p class="tagline">A small client for exploring a notes API.</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="composer" aria-labelledby="form-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CREATE</p>
+            <h2 id="form-heading">Write a note</h2>
+          </div>
+          <button id="load-btn" class="secondary-button" type="button">Load notes</button>
+        </div>
+
+        <form id="note-form">
+          <div class="field">
+            <label for="title-input">Title</label>
+            <input id="title-input" name="title" type="text" placeholder="A short title" />
+          </div>
+          <div class="field">
+            <label for="body-input">Note</label>
+            <textarea id="body-input" name="body" rows="4" placeholder="What would you like to remember?"></textarea>
+          </div>
+          <button id="submit-btn" type="submit">Create note</button>
+        </form>
+      </section>
+
+      <section class="notes-section" aria-labelledby="notes-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">YOUR NOTES</p>
+            <h2 id="notes-heading">Recent notes</h2>
+          </div>
+          <p id="status" class="status status--idle" role="status" aria-live="polite">Load notes to see the latest posts.</p>
+        </div>
+        <ul id="notes-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>QuickNotes · Learn by building.</p>
+    </footer>
+  </body>
+</html>
