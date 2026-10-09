@@ -1,0 +1,272 @@
+:root {
+  --page: #f1f5f1;
+  --surface: #ffffff;
+  --text: #1b2924;
+  --muted: #60716a;
+  --border: #d5dfd8;
+  --green: #126354;
+  --green-hover: #0d4f43;
+  --red: #a63842;
+  --blue: #315f91;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--page);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.site-header {
+  padding: 2.5rem 1.25rem;
+  color: white;
+  background: #174b43;
+}
+
+.header-content,
+main {
+  width: min(100% - 2rem, 700px);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 0.4rem;
+  color: #a9d6c8;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0.35rem;
+  font-size: 2rem;
+}
+
+.tagline {
+  margin: 0;
+  color: #d9e8e2;
+}
+
+main {
+  padding: 2rem 0 3rem;
+}
+
+section {
+  margin-bottom: 1.25rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.section-heading .eyebrow {
+  color: var(--green);
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+form {
+  display: flex;
+  align-items: end;
+  gap: 0.8rem;
+}
+
+.field {
+  display: grid;
+  flex: 1;
+  gap: 0.4rem;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+input,
+textarea,
+button {
+  min-height: 2.75rem;
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+
+input,
+textarea {
+  width: 100%;
+  color: var(--text);
+  background: var(--surface);
+}
+
+textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+button {
+  color: white;
+  background: var(--green);
+  border-color: var(--green);
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+button:hover:not(:disabled) {
+  background: var(--green-hover);
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #79b8a8;
+  outline-offset: 2px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.secondary-button {
+  color: var(--green);
+  background: transparent;
+}
+
+.secondary-button:hover:not(:disabled) {
+  color: white;
+}
+
+.status {
+  max-width: 60%;
+  margin: 0;
+  padding: 0.45rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.status--idle {
+  color: var(--muted);
+  background: #f2f5f2;
+}
+
+.status--loading {
+  color: var(--blue);
+  background: #edf3fa;
+}
+
+.status--success {
+  color: #176247;
+  background: #eaf5ee;
+}
+
+.status--error {
+  color: var(--red);
+  background: #fff0f0;
+}
+
+#notes-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.note-card {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--green);
+  border-radius: 6px;
+}
+
+.note-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+}
+
+.note-card p {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.delete-button {
+  min-height: 2.25rem;
+  padding: 0.4rem 0.7rem;
+  color: var(--red);
+  background: white;
+  border-color: #e7c9cc;
+  font-size: 0.85rem;
+}
+
+.delete-button:hover:not(:disabled) {
+  color: white;
+  background: var(--red);
+}
+
+.empty-state {
+  padding: 1rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+footer {
+  padding: 1.25rem;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 1.75rem 1rem;
+  }
+
+  main {
+    padding-top: 1rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  form {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .status {
+    max-width: none;
+  }
+}
